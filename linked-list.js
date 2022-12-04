@@ -1,5 +1,12 @@
 // linked-list.js
 
+class Node {
+    constructor(value) {
+        this.value = value;
+        this.next = null;
+    }
+}
+
 class LinkedList {
     constructor() {
         this.head = null;
@@ -10,7 +17,8 @@ class LinkedList {
     append(value) {
         console.log('in LinkedList.append')
         const newNode = new Node(value);
-        if (!this.head) {
+        if (!this.head) { //checks if this.head is null
+            console.log('this.head = ' + this.head);
             this.head = newNode;
             this.tail = newNode;
         } else {
@@ -21,15 +29,35 @@ class LinkedList {
         return this;
     }
 
-    prepend() { }
+    prepend(value) {
+        console.log('in prepend');
+        const myNewNode = new Node(value);
+        this.append('dummy');
 
-    size() {
-        return list.length;
+        if (!this.length) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            console.log('myNewNode.value = ' + myNewNode.value)
+
+            list.head.value = myNewNode.value;
+        }
+        // this.length++;
+        return this;
+
     }
 
-    head() { }
+    size() {
+        return this.length;
+    }
 
-    tail() { }
+    headElement() {
+        return this.head;
+    }
+
+    tailElement() {
+        return list.tail;
+    }
 
     at(index) { }
 
@@ -59,7 +87,16 @@ class LinkedList {
         return deletedNode;
     }
 
-    contains(value) { }
+    contains(value) {
+        console.log('in contains')
+        let myExpression = '';
+        for (let i = 0; i < this.length; i++) {
+            myExpression += 'next';
+
+            console.log(this.head.myExpression.value)
+        }
+
+    }
 
     find(value) { }
 
@@ -67,21 +104,19 @@ class LinkedList {
 
 }
 
-class Node {
-    constructor(value) {
-        this.value = value;
-        this.next = null;
-    }
-}
-
 window.addEventListener("DOMContentLoaded", (e) => {
     console.log('DOM loaded and parsed');
 })
 
-let list = new LinkedList('things');
+let list = new LinkedList();
 list.append('tree');
 list.append('grass');
 list.append('rock');
-list.append('flower');
-console.log(list.pop());
-console.log(list.size());
+// list.append('flower');
+// console.log('popped list item is ');
+// console.log(list.pop());
+// console.log('list size = ' + list.size());
+// console.dir('tail element is');
+// console.dir(list.tailElement());
+// console.log('head element is');
+// console.dir(list.headElement());
